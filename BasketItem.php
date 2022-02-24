@@ -15,7 +15,11 @@ class BasketItem
         return $this->price * $this->pieces;
     }
 
-    public function calcTax(float $taxValue) : float {
+    public function calcTaxItem(float $taxValue) : float {
         return $this->calcTotalPriceItem() * $taxValue;
+    }
+
+    public function applyDiscountToItem(float $discount) {
+        return $this->calcTotalPriceItem() * $discount;
     }
 }
