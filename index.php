@@ -124,7 +124,7 @@ function moveWorstStudent($fromGroup, $toGroup)
 }
 
 moveBestStudent($studentGroup1, $studentGroup2);
-moveworstStudent($studentGroup2, $studentGroup1);
+moveWorstStudent($studentGroup2, $studentGroup1);
 
 foreach($studentGroup1 as $student) {
     if($student->group === 2) {
@@ -136,7 +136,8 @@ foreach($studentGroup1 as $student) {
 
 foreach($studentGroup2 as $student) {
     if($student->group === 1) {
-        array_splice($studentGroup2, 0, 1);
+        $index = array_search($student, $studentGroup2);
+        array_splice($studentGroup2, $index, 1);
         $studentGroup1[] = $student;
     }
 }
