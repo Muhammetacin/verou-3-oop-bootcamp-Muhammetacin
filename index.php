@@ -30,12 +30,12 @@ echo 'Use Case 1 With Class<br>';
 $totalPriceBasket = 0;
 $taxPriceBasket = 0;
 
-$bananas = new BasketItem(6, 1);
-$apples = new BasketItem(3, 1.5);
-$bottlesOfWine = new BasketItem(2, 10);
+$bananas = new BasketItem(6, 1, true);
+$apples = new BasketItem(3, 1.5, true);
+$bottlesOfWine = new BasketItem(2, 10, false);
 
-$totalPriceBasket += $bananas->calcTotalPriceItem() + $apples->calcTotalPriceItem() + $bottlesOfWine->calcTotalPriceItem();
-$taxPriceBasket += $bananas->calcTaxItem(0.06) + $apples->calcTaxItem(0.06) + $bottlesOfWine->calcTaxItem(0.21);
+$totalPriceBasket += $bananas->getTotalPrice() + $apples->getTotalPrice() + $bottlesOfWine->getTotalPrice();
+$taxPriceBasket += $bananas->getTaxPrice() + $apples->getTaxPrice() + $bottlesOfWine->getTaxPrice();
 
 echo '<br>Total price of basket with class: €' . $totalPriceBasket;
 echo '<br>Tax of basket with class: €' . $taxPriceBasket;
@@ -60,10 +60,10 @@ $studentGroup2 = [];
 for($group = 1; $group < 3; $group++) {
     for($name = 1; $name < 11; $name++) {
         if($group === 1) {
-            $studentGroup1[] = new Student('student' . $name . 'Group' . $group, rand(0, 100) / 10, $group);
+            $studentGroup1[] = new Student('student' . $name . 'Group' . $group, rand(70, 100) / 10, $group);
         }
         else {
-            $studentGroup2[] = new Student('student' . $name . 'Group' . $group, rand(0, 100) / 10, $group);
+            $studentGroup2[] = new Student('student' . $name . 'Group' . $group, rand(20, 100) / 10, $group);
         }
     }
 }
@@ -86,9 +86,26 @@ function calcAverageScore($array) {
 calcAverageScore($studentGroup1);
 calcAverageScore($studentGroup2);
 
-echo $studentGroup1[0]->name . '\'s group is ' . $studentGroup1[0]->group . '<br>';
-$studentGroup1[0]->changeGroup();
-echo $studentGroup1[0]->name . '\'s group after change is ' . $studentGroup1[0]->group;
+echo $studentGroup1[5]->name . '\'s group is ' . $studentGroup1[5]->group . '<br>';
+$studentGroup1[5]->changeGroup();
+echo $studentGroup1[5]->name . '\'s group after change is ' . $studentGroup1[5]->group;
+
+foreach($studentGroup1 as $student) {
+    if($student->group === 2) {
+        $index = array_search($student, $studentGroup1);
+        array_splice($studentGroup1, $index, 1);
+        $studentGroup2[] = $student;
+    }
+}
+
+foreach($studentGroup2 as $student) {
+    if($student->group === 1) {
+        array_splice($studentGroup2, 0, 1);
+        $studentGroup1[] = $student;
+    }
+}
+
+echo '<br>' . $studentGroup1[0]->name;
 
 echo '<br><br>';
 

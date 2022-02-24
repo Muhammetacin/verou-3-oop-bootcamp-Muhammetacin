@@ -2,24 +2,34 @@
 
 class BasketItem
 {
-    public float $price;
-    public int $pieces;
+    private float $price;
+    private int $pieces;
+    private bool $isFruit;
 
-    public function __construct(int $pieces, float $price)
+    public function __construct(int $pieces, float $price, bool $isFruit)
     {
         $this->pieces = $pieces;
         $this->price = $price;
+        $this->isFruit = $isFruit;
     }
 
-    public function calcTotalPriceItem() : float{
+    private function calcTotalPriceItem() : float{
         return $this->price * $this->pieces;
     }
 
-    public function calcTaxItem(float $taxValue) : float {
-        return $this->calcTotalPriceItem() * $taxValue;
+    private function calcTaxItem() : float {
+        return $this->isFruit ? $this->calcTotalPriceItem() * 0.06 : $this->calcTotalPriceItem() * 0.21;
     }
 
     public function applyDiscountToItem(float $discount) {
         return $this->calcTotalPriceItem() * $discount;
+    }
+
+    public function getTotalPrice() {
+        return $this->calcTotalPriceItem();
+    }
+
+    public function getTaxPrice() {
+        return $this->calcTaxItem();
     }
 }
