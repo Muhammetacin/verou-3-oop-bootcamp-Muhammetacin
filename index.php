@@ -70,6 +70,16 @@ require 'student-groups.php';
 //    }
 //}
 
+// Sort Students array by Grade on descending order
+function cmp($a, $b): int
+{
+    return $a->grade < $b->grade ? 1 : -1;
+}
+
+usort($studentGroup1, "cmp");
+usort($studentGroup2, "cmp");
+
+// Calculate average scores for both groups
 function calcAverageScore($array)
 {
     $sumOfGrades = 0;
@@ -89,9 +99,32 @@ function calcAverageScore($array)
 calcAverageScore($studentGroup1);
 calcAverageScore($studentGroup2);
 
-echo $studentGroup1[5]->name . '\'s group is ' . $studentGroup1[5]->group . '<br>';
-$studentGroup1[5]->changeGroup();
-echo $studentGroup1[5]->name . '\'s group after change is ' . $studentGroup1[5]->group;
+// Move top and worst scoring student to the other group
+function moveBestStudent($fromGroup, $toGroup)
+{
+    echo $fromGroup[0]->name . '\'s group is ' . $fromGroup[0]->group . '<br>';
+    $fromGroup[0]->changeGroup();
+    echo $fromGroup[0]->name . '\'s group after change is ' . $fromGroup[0]->group . '<br>';
+
+    foreach($fromGroup as $student) {
+        if($student->group === 2) {
+            $index = array_search($student, $fromGroup);
+            array_splice($fromGroup, $index, 1);
+            $toGroup[] = $student;
+        }
+    }
+}
+
+function moveWorstStudent($fromGroup, $toGroup)
+{
+    $indexLastItem = count($fromGroup) - 1;
+    echo $fromGroup[$indexLastItem]->name . '\'s group is ' . $fromGroup[$indexLastItem]->group . '<br>';
+    $fromGroup[$indexLastItem]->changeGroup();
+    echo $fromGroup[$indexLastItem]->name . '\'s group after change is ' . $fromGroup[$indexLastItem]->group . '<br>';
+}
+
+moveBestStudent($studentGroup1, $studentGroup2);
+moveworstStudent($studentGroup2, $studentGroup1);
 
 foreach($studentGroup1 as $student) {
     if($student->group === 2) {
@@ -108,20 +141,16 @@ foreach($studentGroup2 as $student) {
     }
 }
 
-echo '<br><br>';
+echo '<br>';
 echo 'Average scores after moving student: <br><br>';
 
 calcAverageScore($studentGroup1);
 calcAverageScore($studentGroup2);
 
-echo '<br><br>';
-
-echo '-Group 1 Students-<br>';
+echo '-Group 1 Students- <br>';
 pre_r($studentGroup1);
-echo '-Group 2 Students-<br>';
+echo '-Group 2 Students- <br>';
 pre_r($studentGroup2);
-
-echo '<br>';
 
 // Use Case 4
 

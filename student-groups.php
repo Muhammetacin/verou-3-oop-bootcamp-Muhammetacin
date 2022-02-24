@@ -5,7 +5,7 @@ function createGroups($group): array
     $studentsArray = [];
 
     for($name = 1; $name < 11; $name++) {
-        $studentsArray[] = new Student('student' . $name . 'Group' . $group, rand(50, 100) / 10, $group);
+        $studentsArray[] = new Student('student' . $name . 'Group' . $group, rand(0, 100) / 10, $group);
     }
 
     return $studentsArray;
