@@ -51,24 +51,9 @@ echo '<br><br>';
 
 // Use Case 3
 require 'Student.php';
-
-echo 'Use Case 3<br><br>';
-
 require 'student-groups.php';
 
-//$studentGroup1 = [];
-//$studentGroup2 = [];
-//
-//for($group = 1; $group < 3; $group++) {
-//    for($name = 1; $name < 11; $name++) {
-//        if($group === 1) {
-//            $studentGroup1[] = new Student('student' . $name . 'Group' . $group, rand(70, 100) / 10, $group);
-//        }
-//        else {
-//            $studentGroup2[] = new Student('student' . $name . 'Group' . $group, rand(20, 100) / 10, $group);
-//        }
-//    }
-//}
+echo 'Use Case 3<br><br>';
 
 // Sort Students array by Grade on descending order
 function cmp($a, $b): int
@@ -100,22 +85,14 @@ calcAverageScore($studentGroup1);
 calcAverageScore($studentGroup2);
 
 // Move top and worst scoring student to the other group
-function moveBestStudent($fromGroup, $toGroup)
+function moveBestStudent($fromGroup)
 {
     echo $fromGroup[0]->name . '\'s group is ' . $fromGroup[0]->group . '<br>';
     $fromGroup[0]->changeGroup();
     echo $fromGroup[0]->name . '\'s group after change is ' . $fromGroup[0]->group . '<br>';
-
-    foreach($fromGroup as $student) {
-        if($student->group === 2) {
-            $index = array_search($student, $fromGroup);
-            array_splice($fromGroup, $index, 1);
-            $toGroup[] = $student;
-        }
-    }
 }
 
-function moveWorstStudent($fromGroup, $toGroup)
+function moveWorstStudent($fromGroup)
 {
     $indexLastItem = count($fromGroup) - 1;
     echo $fromGroup[$indexLastItem]->name . '\'s group is ' . $fromGroup[$indexLastItem]->group . '<br>';
