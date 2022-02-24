@@ -16,8 +16,8 @@ function pre_r($array)
 // Use Case 1 Without Class
 require 'useCase1NoClasses.php';
 
-echo '<br>Total price of basket without class: ' . $totalPrice;
-echo '<br>Tax of basket without class: ' . $taxBasket;
+echo '<br>Total price of basket without class: €' . $totalPrice;
+echo '<br>Tax of basket without class: €' . $taxBasket;
 
 echo '<br>';
 
@@ -34,7 +34,7 @@ $bottlesOfWine = new BasketItem(2, 10);
 $totalPriceBasket += $bananas->calcTotalPriceItem() + $apples->calcTotalPriceItem() + $bottlesOfWine->calcTotalPriceItem();
 $taxPriceBasket += $bananas->calcTax(0.06) + $apples->calcTax(0.06) + $bottlesOfWine->calcTax(0.21);
 
-echo '<br>Total price of basket with class: ' . $totalPriceBasket;
-echo '<br>Tax of basket with class: ' . $taxPriceBasket;
+echo '<br>Total price of basket with class: €' . $totalPriceBasket;
+echo '<br>Tax of basket with class: €' . $taxPriceBasket;
 
 echo '<br>';
