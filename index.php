@@ -54,21 +54,24 @@ require 'Student.php';
 
 echo 'Use Case 3<br><br>';
 
-$studentGroup1 = [];
-$studentGroup2 = [];
+require 'student-groups.php';
 
-for($group = 1; $group < 3; $group++) {
-    for($name = 1; $name < 11; $name++) {
-        if($group === 1) {
-            $studentGroup1[] = new Student('student' . $name . 'Group' . $group, rand(70, 100) / 10, $group);
-        }
-        else {
-            $studentGroup2[] = new Student('student' . $name . 'Group' . $group, rand(20, 100) / 10, $group);
-        }
-    }
-}
+//$studentGroup1 = [];
+//$studentGroup2 = [];
+//
+//for($group = 1; $group < 3; $group++) {
+//    for($name = 1; $name < 11; $name++) {
+//        if($group === 1) {
+//            $studentGroup1[] = new Student('student' . $name . 'Group' . $group, rand(70, 100) / 10, $group);
+//        }
+//        else {
+//            $studentGroup2[] = new Student('student' . $name . 'Group' . $group, rand(20, 100) / 10, $group);
+//        }
+//    }
+//}
 
-function calcAverageScore($array) {
+function calcAverageScore($array)
+{
     $sumOfGrades = 0;
     $nrOfStudents = count($array);
 
@@ -105,7 +108,11 @@ foreach($studentGroup2 as $student) {
     }
 }
 
-echo '<br>' . $studentGroup1[0]->name;
+echo '<br><br>';
+echo 'Average scores after moving student: <br><br>';
+
+calcAverageScore($studentGroup1);
+calcAverageScore($studentGroup2);
 
 echo '<br><br>';
 

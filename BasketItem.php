@@ -13,23 +13,28 @@ class BasketItem
         $this->isFruit = $isFruit;
     }
 
-    private function calcTotalPriceItem() : float{
+    private function calcTotalPriceItem() : float
+    {
         return $this->price * $this->pieces;
     }
 
-    private function calcTaxItem() : float {
+    private function calcTaxItem() : float
+    {
         return $this->isFruit ? $this->calcTotalPriceItem() * 0.06 : $this->calcTotalPriceItem() * 0.21;
     }
 
-    public function applyDiscountToItem(float $discount) {
+    public function applyDiscountToItem(float $discount)
+    {
         return $this->calcTotalPriceItem() * $discount;
     }
 
-    public function getTotalPrice() {
+    public function getTotalPrice()
+    {
         return $this->calcTotalPriceItem();
     }
 
-    public function getTaxPrice() {
+    public function getTaxPrice()
+    {
         return $this->calcTaxItem();
     }
 }

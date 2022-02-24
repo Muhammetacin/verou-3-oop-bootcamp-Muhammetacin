@@ -15,7 +15,8 @@ class Student
         $this->group = $group;
     }
 
-    public function changeGroup() {
+    public function changeGroup(): int
+    {
         return $this->group === 1 ? $this->group = 2 : $this->group = 1;
     }
 }
