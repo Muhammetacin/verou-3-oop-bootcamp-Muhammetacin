@@ -138,17 +138,21 @@ require 'UseCase4/Article.php';
 require 'UseCase4/Ad.php';
 require 'UseCase4/Vacancy.php';
 
-echo 'Use Case 4<br><br>';
+echo 'Use Case 4<br>';
 
 $article = new Article('This is an article title!', 'This is a text of an article.');
-echo nl2br($article->showTitle() . "\n" . $article->showText() . '<br>');
+//echo nl2br('<br>' . $article->showTitle() . "\n" . $article->showText() . '<br>');
 
 $ad = new Ad('This is an ad title!', 'This text belongs to an ad.');
-echo nl2br('<br>' . $ad->showTitle() . "\n" . $ad->showText() . '<br>');
+//echo nl2br('<br>' . $ad->showTitle() . "\n" . $ad->showText() . '<br>');
 
 $vacancy = new Vacancy('This is a vacancy title!', 'This text belongs to a vacancy.');
-echo nl2br('<br>' . $vacancy->showTitle() . "\n" . $vacancy->showText() . '<br>');
+//echo nl2br('<br>' . $vacancy->showTitle() . "\n" . $vacancy->showText() . '<br>');
 
 $article2 = new Article('This is another article title!', 'This is another text of another article.');
 
 $contentArray = [$article, $vacancy, $ad, $article2];
+
+foreach ($contentArray as $content) {
+    echo nl2br('<br>' . $content->showTitle() . "\n" . $content->showText() . '<br>');
+}
