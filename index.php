@@ -44,7 +44,7 @@ echo '<br><br>';
 
 echo 'Use Case 2 - Discount<br>';
 
-$totalDiscountedPrice = $bananas->applyDiscountToItem(0.5) + $apples->applyDiscountToItem(0.5) + $bottlesOfWine->applyDiscountToItem(0.5);
+$totalDiscountedPrice = $bananas->applyDiscountToItem() + $apples->applyDiscountToItem() + $bottlesOfWine->applyDiscountToItem();
 echo '<br>Total discounted price of basket: €' . $totalDiscountedPrice;
 
 echo '<br><br>';

@@ -23,9 +23,9 @@ class BasketItem
         return $this->isFruit ? $this->calcTotalPriceItem() * 0.06 : $this->calcTotalPriceItem() * 0.21;
     }
 
-    public function applyDiscountToItem(float $discount)
+    public function applyDiscountToItem()
     {
-        return $this->calcTotalPriceItem() * $discount;
+        return $this->isFruit ? $this->calcTotalPriceItem() * 0.5 : $this->calcTotalPriceItem();
     }
 
     public function getTotalPrice()
