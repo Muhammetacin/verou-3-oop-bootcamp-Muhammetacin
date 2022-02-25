@@ -100,8 +100,8 @@ function moveWorstStudent($fromGroup)
     echo $fromGroup[$indexLastItem]->name . '\'s group after change is ' . $fromGroup[$indexLastItem]->group . '<br>';
 }
 
-moveBestStudent($studentGroup1, $studentGroup2);
-moveWorstStudent($studentGroup2, $studentGroup1);
+moveBestStudent($studentGroup1);
+moveWorstStudent($studentGroup2);
 
 foreach($studentGroup1 as $student) {
     if($student->group === 2) {
