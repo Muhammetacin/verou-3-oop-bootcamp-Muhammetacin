@@ -9,11 +9,11 @@ class Ad extends Content
 
     public function showTitle() : string
     {
-        return strtoupper(parent::showTitle());
+        return '<h3>' . strtoupper(parent::showTitle()) . '</h3>';
     }
 
     public function showOriginalTitle(): string
     {
-        return parent::showTitle();
+        return '<h2>' . parent::showTitle() . '</h2>';
     }
 }

@@ -154,5 +154,13 @@ $article2 = new Article('This is another article title with breaking news!', 'Th
 $contentArray = [$article, $vacancy, $ad, $article2];
 
 foreach ($contentArray as $content) {
-    echo nl2br('<br>' . $content->showTitle() . "\n" . $content->showText() . '<br>');
+    if($content instanceof Article) {
+        echo '<article>' . $content->showTitle() . $content->showText() . '</article>';
+    }
+    if($content instanceof Ad) {
+        echo '<aside>' . $content->showTitle() . $content->showText() . '</aside>';
+    }
+    if($content instanceof Vacancy) {
+        echo '<section>' . $content->showTitle() . $content->showText() . '</section>';
+    }
 }

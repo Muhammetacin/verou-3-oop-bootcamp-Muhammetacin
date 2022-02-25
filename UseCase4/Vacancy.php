@@ -9,11 +9,11 @@ class Vacancy extends Content
 
     public function showTitle() : string
     {
-        return parent::showTitle() . ' - Apply now!';
+        return '<h3>' . parent::showTitle() . ' - Apply now!</h3>';
     }
 
     public function showOriginalTitle(): string
     {
-        return parent::showTitle();
+        return '<h2>' . parent::showTitle() . '</h2>';
     }
 }

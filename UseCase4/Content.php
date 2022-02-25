@@ -11,13 +11,13 @@ class Content
         $this->text = $text;
     }
 
-    public function showTitle(): string
+    protected function showTitle(): string
     {
         return $this->title;
     }
 
     public function showText(): string
     {
-        return $this->text;
+        return '<p>' . $this->text . '</p>';
     }
 }

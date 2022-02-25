@@ -13,8 +13,8 @@ class Article extends Content
     public function showTitle() : string
     {
         if($this->isBreakingNews) {
-            return 'BREAKING: ' . parent::showTitle();
+            return '<h3>BREAKING: ' . parent::showTitle() . '</h3>';
         }
-        return parent::showTitle();
+        return '<h3>' . parent::showTitle() . '</h3>';
     }
 }
